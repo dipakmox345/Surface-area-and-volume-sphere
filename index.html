@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surface Area and Volume of Sphere</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Surface Area and Volume of Sphere</h1>
+        
+        <label for="radius">Radius</label>
+        <input type="number" id="radius" placeholder="Enter radius" />
+
+        <label for="surface-area">Surface Area</label>
+        <input type="text" id="surface-area" placeholder="Surface Area" readonly />
+
+        <label for="volume">Volume</label>
+        <input type="text" id="volume" placeholder="Volume" readonly />
+        
+        <button onclick="calculate()">CALCULATE</button>
+        <button onclick="clearFields()">ALL CLEAR</button>
+        <button onclick="endApp()">END</button>
+    </div>
+
+    <script>
+        function calculate() {
+            let radius = parseFloat(document.getElementById('radius').value);
+            if (isNaN(radius) || radius <= 0) {
+                alert('Please enter a valid radius.');
+                return;
+            }
+
+            let pi = 3.1416;
+
+            // Surface Area of a Sphere: 4 * pi * r^2
+            let surfaceArea = 4 * pi * radius * radius;
+
+            // Volume of a Sphere: (4/3) * pi * r^3
+            let volume = (4 / 3) * pi * Math.pow(radius, 3);
+
+            document.getElementById('surface-area').value = surfaceArea.toFixed(2);
+            document.getElementById('volume').value = volume.toFixed(2);
+        }
+
+        function clearFields() {
+            document.getElementById('radius').value = '';
+            document.getElementById('surface-area').value = '';
+            document.getElementById('volume').value = '';
+        }
+
+        function endApp() {
+            window.close();
+        }
+    </script>
+</body>
+</html>
